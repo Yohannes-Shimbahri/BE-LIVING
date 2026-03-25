@@ -1,0 +1,74 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--white);
+  padding: 40px 30px;
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+.icon {
+  font-size: 42px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.desc {
+  font-size: 15px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+
+.detail {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* Cross grid */
+.crossGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.crossCard {
+  border: 1px solid var(--dark-border);
+  padding: 30px 26px;
+}
+
+.crossTitle {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.crossDesc {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}

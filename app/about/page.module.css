@@ -1,0 +1,130 @@
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.heading {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+}
+
+.body {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.statCard {
+  background: var(--dark);
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.statValue {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 8px;
+  display: block;
+}
+
+/* Values */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.valueCard {
+  border: 1px solid var(--dark-border);
+  padding: 28px 22px;
+}
+
+.valueIcon {
+  font-size: 24px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.valueTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.valueDesc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* Process */
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.processStep {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--white);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  border-top: 3px solid var(--gold);
+}
+
+.processNum {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 14px;
+  opacity: 0.5;
+}
+
+.processTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.processDesc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+@media (max-width: 900px) {
+  .storyGrid { grid-template-columns: 1fr; gap: 40px; }
+  .statsGrid { grid-template-columns: 1fr 1fr; }
+}
