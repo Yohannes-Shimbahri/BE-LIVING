@@ -26,18 +26,13 @@ export default function About() {
           <div className={styles.storyText}>
             <h2 className={styles.heading}>Our Story</h2>
             <p className={styles.body}>
-              Be-Living Marketing Agency was founded on a simple belief: great marketing is equal parts art and science.
-              We blend storytelling, analytics, and customer-focused strategies to build strong brand identities,
-              increase engagement, and drive measurable business results.
+              Be-Living Marketing Agency was founded on a simple belief — great marketing is equal parts art and science. We blend storytelling, analytics, and customer-focused strategies to build strong brand identities, increase engagement, and drive measurable business results.
             </p>
             <p className={styles.body}>
-              Our approach is rooted in understanding each client's unique goals and delivering tailored solutions
-              that align with their target audience, industry trends, and long-term vision. We don't do cookie-cutter
-              — every strategy is built from scratch, for you.
+              Our approach is rooted in understanding each client's unique goals and delivering tailored solutions that align with their target audience, industry trends, and long-term vision. We don't do cookie-cutter — every strategy is built from scratch, for you.
             </p>
             <p className={styles.body}>
-              We prioritize both creativity and performance, ensuring that every campaign is not only visually
-              compelling but also results-oriented. When you work with Be-Living, you get a true partner — not just a vendor.
+              We prioritize both creativity and performance, ensuring that every campaign is not only visually compelling but also results-oriented. When you work with Be-Living, you get a true partner, not just a vendor.
             </p>
             <Link href="/contact" className="btn-primary" style={{ marginTop: '24px', display: 'inline-block' }}>
               Work With Us →

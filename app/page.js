@@ -5,7 +5,7 @@ import styles from './page.module.css';
 
 export const metadata = {
   title: 'Be-Living Marketing Agency | Digital Marketing That Moves People',
-  description: 'Full-service digital marketing agency. Social media, paid ads, content creation, email marketing, and more.',
+  description: 'Full service digital marketing agency. Social media, paid ads, content creation, email marketing, and more.',
 };
 
 export default function Home() {
@@ -15,15 +15,14 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={styles.heroGrid} />
         <div className={styles.heroContent}>
-          <span className={styles.heroBadge}>Full-Service Digital Marketing</span>
+          <span className={styles.heroBadge}>Full Service Digital Marketing Agency</span>
           <h1 className={styles.heroTitle}>
             We Build Brands<br />
             <span className={styles.heroAccent}>That Move People.</span>
           </h1>
           <p className={styles.heroSub}>
-            Data-driven strategy. Creative execution. Measurable results.
-            Be-Living transforms your vision into campaigns that grow your business.
-          </p>
+            Data driven strategy. Creative execution. Measurable results.
+            We help grow your business, naturally.</p>
           <div className={styles.heroBtns}>
             <Link href="/contact" className="btn-primary">Book a Consultation</Link>
             <Link href="/portfolio" className="btn-outline">View Our Work</Link>

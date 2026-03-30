@@ -1,0 +1,128 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1040B0 0%, #1A56DB 60%, #3B82F6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 48px 44px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.logoIcon {
+  width: 38px; height: 38px;
+  background: #1A56DB;
+  color: #fff;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800;
+}
+
+.logoText { font-size: 18px; font-weight: 800; color: #0F172A; }
+.accent { color: #1A56DB; }
+
+.setupBadge {
+  display: inline-block;
+  background: #EBF2FF;
+  color: #1A56DB;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.sub {
+  font-size: 14px;
+  color: #64748B;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.error {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #DC2626;
+  font-size: 13px;
+  padding: 11px 15px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.field { margin-bottom: 16px; }
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  background: #F8FAFF;
+  font-size: 15px;
+  color: #0F172A;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.input:focus {
+  border-color: #1A56DB;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26,86,219,0.08);
+}
+
+.btn {
+  width: 100%;
+  padding: 15px;
+  background: #1A56DB;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(26,86,219,0.3);
+  font-family: inherit;
+}
+
+.btn:hover { background: #1040B0; transform: translateY(-1px); }
+
+@media (max-width: 500px) {
+  .card { padding: 32px 24px; }
+}
