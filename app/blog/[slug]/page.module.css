@@ -1,0 +1,116 @@
+.hero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.3) 60%, transparent 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 60px 40px 50px;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.category {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: clamp(28px, 4vw, 50px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.12;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  flex-wrap: wrap;
+}
+
+.dot { color: rgba(255,255,255,0.4); }
+
+/* Article body */
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 40px 80px;
+}
+
+.excerpt {
+  font-size: 20px;
+  color: var(--gray-700);
+  line-height: 1.7;
+  font-weight: 500;
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 2px solid var(--gray-100);
+}
+
+.content {
+  font-size: 17px;
+  color: var(--gray-700);
+  line-height: 1.85;
+}
+
+.content h1, .content h2, .content h3 {
+  color: var(--dark);
+  font-weight: 800;
+  margin: 36px 0 14px;
+  letter-spacing: -0.3px;
+}
+
+.content h1 { font-size: 32px; }
+.content h2 { font-size: 26px; }
+.content h3 { font-size: 21px; }
+
+.content p { margin-bottom: 20px; }
+
+.content strong { color: var(--dark); font-weight: 700; }
+
+.content ul {
+  margin: 16px 0 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.content li { color: var(--gray-700); }
+
+.back { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--gray-100); }
+
+@media (max-width: 768px) {
+  .heroContent { padding: 40px 20px 36px; }
+  .wrapper { padding: 40px 20px 60px; }
+}
