@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { getCurrentAdmin, logoutAdmin } from '@/lib/adminStore';
+import { getCurrentUser, logoutAdmin } from '@/lib/adminStore';
 
 const NAV = [
   { label: 'Dashboard',  href: '/admin/dashboard',          icon: '🏠' },
@@ -25,9 +25,12 @@ export default function AdminShell({ children, title }) {
   const [sideOpen, setSideOpen] = useState(false);
 
   useEffect(() => {
-    const a = getCurrentAdmin();
-    if (!a) { router.push('/admin'); return; }
-    setAdmin(a);
+    async function checkAuth() {
+      const a = await getCurrentUser();
+      if (!a) { router.push('/admin'); return; }
+      setAdmin(a);
+    }
+    checkAuth();
   }, []);
 
   const handleLogout = () => { logoutAdmin(); router.push('/admin'); };
@@ -74,10 +77,10 @@ export default function AdminShell({ children, title }) {
           </div>
           {admin && (
             <div style={s.adminInfo}>
-              <div style={s.adminAvatar}>{admin.name?.[0]?.toUpperCase() || 'A'}</div>
+              <div style={s.adminAvatar}>{admin.email?.[0]?.toUpperCase() || 'A'}</div>
               <div>
-                <p style={s.adminName}>{admin.name}</p>
-                <p style={s.adminRole}>{admin.role}</p>
+                <p style={s.adminName}>{admin.email}</p>
+                <p style={s.adminRole}>Admin</p>
               </div>
             </div>
           )}
