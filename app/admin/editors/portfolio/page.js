@@ -35,8 +35,8 @@ export default function PortfolioEditor() {
     setSel(Math.max(0, selected - 1));
   };
 
-  const handleSave = () => {
-    saveContent('portfolio', items);
+  const handleSave = async () => {
+    await saveContent('portfolio', items);
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
   };

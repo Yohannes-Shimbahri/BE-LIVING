@@ -31,7 +31,7 @@ export default function ServicesEditor() {
     setServices(next);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     saveContent('services', services);
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);

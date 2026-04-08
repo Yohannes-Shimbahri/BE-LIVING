@@ -21,7 +21,7 @@ export default function IndustriesEditor() {
     const next = [...items]; next[selected] = { ...next[selected], [key]: val }; setItems(next);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     saveContent('industries', items); setSaved(true); setTimeout(() => setSaved(false), 2500);
   };
 

@@ -10,7 +10,7 @@ export default function ContactEditor() {
 
   useEffect(() => { setData(getContent('contact')); }, []);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     saveContent('contact', data); setSaved(true); setTimeout(() => setSaved(false), 2500);
   };
 

@@ -10,7 +10,7 @@ export default function HeroEditor() {
 
   useEffect(() => { setData(getContent('hero')); }, []);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     saveContent('hero', data);
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);

@@ -7,6 +7,8 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', company: '', service: '', message: '', time: '' });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [sending, setSending] = useState(false);
+  const [serverError, setServerError] = useState('');
 
   const validate = () => {
     const e = {};
@@ -22,10 +24,35 @@ export default function ContactPage() {
     if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: '' });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const e = validate();
     if (Object.keys(e).length > 0) { setErrors(e); return; }
-    setSubmitted(true);
+
+    setSending(true);
+    setServerError('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:    form.name,
+          email:   form.email,
+          phone:   form.company, // using company field
+          service: form.service,
+          message: form.message + (form.time ? `\n\nPreferred time: ${form.time}` : ''),
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to send');
+
+      setSubmitted(true);
+    } catch (err) {
+      setServerError(err.message || 'Something went wrong. Please try again.');
+    }
+
+    setSending(false);
   };
 
   return (
@@ -184,8 +211,19 @@ export default function ContactPage() {
                   </select>
                 </div>
 
-                <button className="btn-primary" onClick={handleSubmit} style={{ width: '100%', fontSize: '14px', padding: '16px' }}>
-                  Send Message →
+                {serverError && (
+                  <p style={{ color: '#DC2626', fontSize: 13, marginBottom: 12 }}>
+                    ⚠ {serverError}
+                  </p>
+                )}
+
+                <button
+                  className="btn-primary"
+                  onClick={handleSubmit}
+                  disabled={sending}
+                  style={{ width: '100%', fontSize: '14px', padding: '16px', opacity: sending ? 0.7 : 1 }}
+                >
+                  {sending ? 'Sending...' : 'Send Message →'}
                 </button>
               </>
             )}

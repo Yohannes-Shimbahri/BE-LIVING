@@ -10,7 +10,7 @@ export default function AboutEditor() {
 
   useEffect(() => { setData(getContent('about')); }, []);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     saveContent('about', data); setSaved(true); setTimeout(() => setSaved(false), 2500);
   };
 

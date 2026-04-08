@@ -19,7 +19,7 @@ export default function ThemeEditor() {
 
   useEffect(() => { setColors(getContent('theme')); }, []);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     saveContent('theme', colors);
     // Apply CSS variables live to the page
     Object.entries(colors).forEach(([key, val]) => {
