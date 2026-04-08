@@ -5,12 +5,11 @@ import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
+  { label: 'Blog',       href: '/blog' },
   { label: 'Services', href: '/services' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Industries', href: '/industries' },
-  { label: 'Blog',       href: '/blog' },
+    { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 
