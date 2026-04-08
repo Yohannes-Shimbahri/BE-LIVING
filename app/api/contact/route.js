@@ -11,9 +11,9 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Name, email and message are required.' }, { status: 400 });
     }
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Be-Living Website <onboarding@resend.dev>',
-      to: 'beliving1000@gmail.com',
+      to: 'bersabel.og@gmail.com',
       replyTo: email,
       subject: `New enquiry from ${name}`,
       html: `
@@ -40,6 +40,13 @@ export async function POST(request) {
         </div>
       `,
     });
+
+    if (error) {
+      console.error("RESEND ERROR:", error);
+      return NextResponse.json({ error }, { status: 500 });
+    }
+
+    console.log("RESEND SUCCESS:", data);
 
     return NextResponse.json({ success: true });
   } catch (err) {
