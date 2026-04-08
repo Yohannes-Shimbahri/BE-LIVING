@@ -8,10 +8,16 @@ export default function AboutEditor() {
   const [preview, setPreview] = useState(false);
   const [saved, setSaved]     = useState(false);
 
-  useEffect(() => { setData(getContent('about')); }, []);
+  useEffect(() => {
+    async function load() {
+      const data = await getContent('about');
+      setData(data);
+    }
+    load();
+  }, []);
 
   const handleSave = async () => {
-    saveContent('about', data); setSaved(true); setTimeout(() => setSaved(false), 2500);
+    await saveContent('about', data); setSaved(true); setTimeout(() => setSaved(false), 2500);
   };
 
   return (

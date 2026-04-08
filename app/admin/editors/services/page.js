@@ -32,7 +32,7 @@ export default function ServicesEditor() {
   };
 
   const handleSave = async () => {
-    saveContent('services', services);
+    await saveContent('services', services);
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
   };

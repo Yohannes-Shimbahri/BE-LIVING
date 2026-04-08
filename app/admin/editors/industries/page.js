@@ -22,7 +22,7 @@ export default function IndustriesEditor() {
   };
 
   const handleSave = async () => {
-    saveContent('industries', items); setSaved(true); setTimeout(() => setSaved(false), 2500);
+    await saveContent('industries', items); setSaved(true); setTimeout(() => setSaved(false), 2500);
   };
 
   const cur = items[selected] || {};

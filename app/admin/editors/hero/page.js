@@ -8,10 +8,16 @@ export default function HeroEditor() {
   const [preview, setPreview] = useState(false);
   const [saved, setSaved]     = useState(false);
 
-  useEffect(() => { setData(getContent('hero')); }, []);
+    useEffect(() => {
+    async function load() {
+      const data = await getContent('hero');
+      setData(data);
+    }
+    load();
+  }, []);
 
   const handleSave = async () => {
-    saveContent('hero', data);
+    await saveContent('hero', data);
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
   };

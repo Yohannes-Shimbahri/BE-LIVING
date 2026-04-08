@@ -8,10 +8,17 @@ export default function ContactEditor() {
   const [preview, setPreview] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  useEffect(() => { setData(getContent('contact')); }, []);
+  useEffect(() => {
+    async function load() {
+      const data = await getContent('contact');
+      setData(data);
+    }
+    load();
+  }, []);
 
   const handleSave = async () => {
-    saveContent('contact', data); setSaved(true); setTimeout(() => setSaved(false), 2500);
+    await saveContent('contact', data); 
+    setSaved(true); setTimeout(() => setSaved(false), 2500);
   };
 
   return (

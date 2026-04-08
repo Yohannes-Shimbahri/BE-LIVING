@@ -23,7 +23,7 @@ export default function StatsEditor() {
   };
 
   const handleSave = async () => {
-    saveContent('stats', stats);
+    await saveContent('stats', stats);
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
   };

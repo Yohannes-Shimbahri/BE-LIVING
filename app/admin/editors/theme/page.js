@@ -17,10 +17,16 @@ export default function ThemeEditor() {
   const [preview, setPreview] = useState(false);
   const [saved, setSaved]     = useState(false);
 
-  useEffect(() => { setColors(getContent('theme')); }, []);
+  useEffect(() => {
+    async function load() {
+      const data = await getContent('theme');
+      setData(data);
+    }
+    load();
+  }, []);
 
   const handleSave = async () => {
-    saveContent('theme', colors);
+    await saveContent('theme', colors);
     // Apply CSS variables live to the page
     Object.entries(colors).forEach(([key, val]) => {
       const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
