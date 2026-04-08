@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 // Server-side only — service role key is never sent to the browser
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  process.env.SUPABASE_SECRET_KEY
 );
 
 // GET — list all users
