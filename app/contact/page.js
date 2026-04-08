@@ -1,6 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SERVICES, SITE } from '@/lib/data';
+import { getContent } from '@/lib/adminStore';
 import styles from './page.module.css';
 
 export default function ContactPage() {
@@ -9,6 +10,16 @@ export default function ContactPage() {
   const [errors, setErrors] = useState({});
   const [sending, setSending] = useState(false);
   const [serverError, setServerError] = useState('');
+  const [siteInfo, setSiteInfo] = useState(SITE);
+
+
+  useEffect(() => {
+    async function load() {
+      const contact = await getContent('contact');
+      if (contact && contact.email) setSiteInfo(contact);
+    }
+    load();
+  }, [])
 
   const validate = () => {
     const e = {};
@@ -74,10 +85,10 @@ export default function ContactPage() {
             <h3 className={styles.infoTitle}>Get In Touch</h3>
 
             {[
-              { icon: '✉', label: 'Email', val: SITE.email },
-              { icon: '📞', label: 'Phone', val: SITE.phone },
-              { icon: '📍', label: 'Location', val: SITE.location },
-              { icon: '⏱', label: 'Response Time', val: SITE.responseTime },
+              { icon: '✉', label: 'Email',         val: siteInfo.email },
+              { icon: '📞', label: 'Phone',         val: siteInfo.phone },
+              { icon: '📍', label: 'Location',      val: siteInfo.location },
+              { icon: '⏱', label: 'Response Time', val: siteInfo.responseTime },
             ].map((c, i) => (
               <div key={i} className={styles.infoItem}>
                 <span className={styles.infoIcon}>{c.icon}</span>

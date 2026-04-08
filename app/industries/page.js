@@ -1,14 +1,22 @@
 import Link from 'next/link';
 import AnimatedCard from '@/components/AnimatedCard';
 import { INDUSTRIES } from '@/lib/data';
+import { getContent } from '@/lib/adminStore';
 import styles from './page.module.css';
 
 export const metadata = {
   title: 'Industries | Be-Living Marketing Agency',
-  description: 'Be-Living serves automotive, fashion, real estate, logistics, import/export, and non-profit industries with tailored marketing strategies.',
+  description: 'Be-Living serves automotive, fashion, real estate, logistics, import/export, and non-profit industries.',
 };
 
-export default function Industries() {
+export const revalidate = 30;
+
+export default async function Industries() {
+  let industries = await getContent('industries');
+  if (!industries || !Array.isArray(industries) || industries.length === 0) {
+    industries = INDUSTRIES;
+  }
+
   return (
     <>
       <div className="page-hero">
@@ -22,18 +30,28 @@ export default function Industries() {
 
       <section className="section">
         <div className={styles.grid}>
-          {INDUSTRIES.map((ind, i) => (
+          {industries.map((ind, i) => (
             <AnimatedCard key={i} delay={i * 80} className={styles.card}>
-              <span className={styles.icon}>{ind.icon}</span>
-              <h3 className={styles.name}>{ind.name}</h3>
-              <p className={styles.desc}>{ind.desc}</p>
-              <p className={styles.detail}>{ind.detail}</p>
+              {ind.image ? (
+                <div className={styles.cardImgWrap}>
+                  <img src={ind.image} alt={ind.name} className={styles.cardImg} />
+                  <span className={styles.cardImgIcon}>{ind.icon}</span>
+                </div>
+              ) : (
+                <div className={styles.cardNoImg}>
+                  <span className={styles.icon}>{ind.icon}</span>
+                </div>
+              )}
+              <div className={styles.cardBody}>
+                <h3 className={styles.name}>{ind.name}</h3>
+                <p className={styles.desc}>{ind.desc}</p>
+                <p className={styles.detail}>{ind.detail}</p>
+              </div>
             </AnimatedCard>
           ))}
         </div>
       </section>
 
-      {/* Cross-industry section */}
       <section className="section--dark">
         <div className="inner">
           <div className="section-header">
@@ -42,18 +60,9 @@ export default function Industries() {
           </div>
           <div className={styles.crossGrid}>
             {[
-              {
-                title: 'Diverse Perspective',
-                desc: 'Working across industries gives us pattern recognition that single-niche agencies lack. We bring fresh ideas from unexpected places.',
-              },
-              {
-                title: 'Transferable Strategy',
-                desc: "We apply winning tactics from one industry to unlock growth in another — what works in real estate can transform how a fashion brand captures leads.",
-              },
-              {
-                title: 'Audience Intelligence',
-                desc: 'Deep understanding of different buyer behaviors and decision journeys means we build campaigns that speak the right language to the right people.',
-              },
+              { title: 'Diverse Perspective', desc: 'Working across industries gives us pattern recognition that single-niche agencies lack. We bring fresh ideas from unexpected places.' },
+              { title: 'Transferable Strategy', desc: "We apply winning tactics from one industry to unlock growth in another — what works in real estate can transform how a fashion brand captures leads." },
+              { title: 'Audience Intelligence', desc: 'Deep understanding of different buyer behaviors means we build campaigns that speak the right language to the right people.' },
             ].map((c, i) => (
               <AnimatedCard key={i} delay={i * 100} className={styles.crossCard}>
                 <h4 className={styles.crossTitle}>{c.title}</h4>

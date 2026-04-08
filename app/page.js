@@ -9,7 +9,7 @@ export const metadata = {
   description: 'Full service digital marketing agency. Social media, paid ads, content creation, email marketing, and more.',
 };
 
-export const revalidate = 60;
+export const revalidate = 30;
 
 export default async function Home() {
   // Read from Supabase, fall back to hardcoded data

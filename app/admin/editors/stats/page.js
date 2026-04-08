@@ -11,7 +11,7 @@ export default function StatsEditor() {
   useEffect(() => {
     async function load() {
       const data = await getContent('stats');
-      setItems(data);
+      setStats(data);
     }
     load();
   }, []);
