@@ -12,7 +12,7 @@ export default function ServicesEditor() {
   useEffect(() => {
     async function load() {
       const data = await getContent('services');
-      setItems(data);
+      setservices(data);
     }
     load();
   }, []);

@@ -1,5 +1,6 @@
 import AnimatedCard from '@/components/AnimatedCard';
 import { PORTFOLIO } from '@/lib/data';
+import { getContent } from '@/lib/adminStore';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -7,7 +8,15 @@ export const metadata = {
   description: 'Real campaigns, real results. See how Be-Living has helped businesses across industries achieve measurable growth.',
 };
 
-export default function Portfolio() {
+export const revalidate = 60; // refresh every 60 seconds
+
+export default async function Portfolio() {
+  // Try Supabase first, fall back to hardcoded data
+  let portfolio = await getContent('portfolio');
+  if (!portfolio || !Array.isArray(portfolio) || portfolio.length === 0) {
+    portfolio = PORTFOLIO;
+  }
+
   return (
     <>
       <div className="page-hero">
@@ -15,17 +24,28 @@ export default function Portfolio() {
         <span className="page-hero__tag">Portfolio</span>
         <h1 className="page-hero__title">Our Work Speaks for Itself</h1>
         <p className="page-hero__sub">
-          Real campaigns. Real results. Explore how we've helped businesses across industries achieve measurable growth.
+          Real campaigns. Real results. Explore how we've helped businesses
+          across industries achieve measurable growth.
         </p>
       </div>
 
       <section className="section">
         <div className={styles.grid}>
-          {PORTFOLIO.map((p, i) => (
+          {portfolio.map((p, i) => (
             <AnimatedCard key={i} delay={i * 80} className={styles.card}>
-              <div className={styles.cardTop} style={{ background: p.color }} />
+              {/* Image if available, color block as fallback */}
+              {p.image ? (
+                <div className={styles.cardImgWrap}>
+                  <img src={p.image} alt={p.title} className={styles.cardImg} />
+                  <span className={styles.cardImgTag}>{p.tag}</span>
+                </div>
+              ) : (
+                <div className={styles.cardTop} style={{ background: p.color || '#1A56DB' }}>
+                  <span className={styles.cardTopTag}>{p.tag}</span>
+                </div>
+              )}
               <div className={styles.cardBody}>
-                <span className={styles.tag}>{p.tag}</span>
+                {!p.image && <span className={styles.tag}>{p.tag}</span>}
                 <h3 className={styles.title}>{p.title}</h3>
                 <p className={styles.desc}>{p.desc}</p>
                 <div className={styles.result}>
