@@ -8,7 +8,13 @@ export default function StatsEditor() {
   const [preview, setPreview] = useState(false);
   const [saved, setSaved]     = useState(false);
 
-  useEffect(() => { setStats(getContent('stats')); }, []);
+  useEffect(() => {
+    async function load() {
+      const data = await getContent('stats');
+      setItems(data);
+    }
+    load();
+  }, []);
 
   const update = (i, key, val) => {
     const next = [...stats];

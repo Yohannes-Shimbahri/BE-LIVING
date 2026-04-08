@@ -9,7 +9,13 @@ export default function ServicesEditor() {
   const [preview, setPreview]   = useState(false);
   const [saved, setSaved]       = useState(false);
 
-  useEffect(() => { setServices(getContent('services')); }, []);
+  useEffect(() => {
+    async function load() {
+      const data = await getContent('services');
+      setItems(data);
+    }
+    load();
+  }, []);
 
   const update = (key, val) => {
     const next = [...services];

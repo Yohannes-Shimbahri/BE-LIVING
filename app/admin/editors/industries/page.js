@@ -9,7 +9,13 @@ export default function IndustriesEditor() {
   const [preview, setPreview] = useState(false);
   const [saved, setSaved]     = useState(false);
 
-  useEffect(() => { setItems(getContent('industries')); }, []);
+  useEffect(() => {
+    async function load() {
+      const data = await getContent('industries');
+      setItems(data);
+    }
+    load();
+  }, []);
 
   const update = (key, val) => {
     const next = [...items]; next[selected] = { ...next[selected], [key]: val }; setItems(next);

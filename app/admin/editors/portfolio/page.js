@@ -9,7 +9,13 @@ export default function PortfolioEditor() {
   const [preview, setPreview] = useState(false);
   const [saved, setSaved]     = useState(false);
 
-  useEffect(() => { setItems(getContent('portfolio')); }, []);
+  useEffect(() => {
+    async function load() {
+      const data = await getContent('portfolio');
+      setItems(data);
+    }
+    load();
+  }, []);
 
   const update = (key, val) => {
     const next = [...items];
